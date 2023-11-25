@@ -1,4 +1,5 @@
 import { db } from "@/lib/prismadb";
+import { auth } from "@clerk/nextjs";
 import {  NextResponse } from "next/server";
 
 
@@ -7,8 +8,13 @@ export async function POST(
     req:Request,
 ){
     try {
-        const {title, userId = 'defaultUserId'} = await req.json();
-         
+        const {userId} = auth()
+        const {title} = await req.json();
+        
+       if(!userId){
+        return new NextResponse("unauthorized",{status: 401})
+       }
+
         const course = await db.course.create({
           data :{
             title,

@@ -2,7 +2,7 @@
 import { Layout, Compass, BarChart, List } from "lucide-react";
 import { SidebarItems } from "./SidebarItems";
 import { usePathname } from "next/navigation";
-import isTeacherPage from "./../(routes)/teacher/courses/page";
+
 
 const guestRoutes = [
   {
