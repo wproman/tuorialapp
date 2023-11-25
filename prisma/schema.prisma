@@ -9,6 +9,9 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+// npx prisma generate
+// npx prisma db push
+// npx prisma migrate dev
 
 model Users {
   id          String @id @default(uuid())

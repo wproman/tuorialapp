@@ -4,12 +4,13 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
 import Link from "next/link";
+import { UserButton } from "@clerk/nextjs";
 
 export const NavbarRoutes = () => {
   const pathname = usePathname();
 
   const isTeacherPage = pathname?.startsWith("/teacher");
-  const isPlayerPage = pathname?.includes("/teacher");
+  const isPlayerPage = pathname?.includes("/chapter");
 
   return (
     <div className="flex gap-x-2 ml-auto items-center">
@@ -29,7 +30,7 @@ export const NavbarRoutes = () => {
           </Link>
         )}
       </div>
-      <div>login</div>
+      <UserButton afterSignOutUrl="/" />
     </div>
   );
 };
