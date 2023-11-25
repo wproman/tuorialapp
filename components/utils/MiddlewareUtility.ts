@@ -18,31 +18,31 @@
 //     }
 
 
-import { VerifyToken } from "./JWTHelper";
-import { NextRequest, NextResponse } from "next/server";
+// import { VerifyToken } from "./JWTHelper";
+// import { NextRequest, NextResponse } from "next/server";
 
-export async function CheckCookieAuth(req: NextRequest) {
-    try {
-        let token = req.cookies.get('token');
+// export async function CheckCookieAuth(req: NextRequest) {
+//     try {
+//         let token = req.cookies.get('token');
         
-        if (token) {
-            let payload = await VerifyToken(token.value);
+//         if (token) {
+//             let payload = await VerifyToken(token.value);
             
-            // Type assertion to tell TypeScript that payload.email is a string
-            const email: string = payload.email as string;
-            console.log(email);
+//             // Type assertion to tell TypeScript that payload.email is a string
+//             const email: string = payload.email as string;
+//             console.log(email);
 
-            const requestHeaders = new Headers(req.headers);
-            requestHeaders.set('email', email);
+//             const requestHeaders = new Headers(req.headers);
+//             requestHeaders.set('email', email);
 
-            return NextResponse.next({
-                request: { headers: requestHeaders },
-            });
-        } else {
-            throw new Error("Token not found in cookies");
-        }
-    } catch (e) {
-        return NextResponse.redirect(new URL('/login', req.url));
-    }
-}
+//             return NextResponse.next({
+//                 request: { headers: requestHeaders },
+//             });
+//         } else {
+//             throw new Error("Token not found in cookies");
+//         }
+//     } catch (e) {
+//         return NextResponse.redirect(new URL('/login', req.url));
+//     }
+// }
 
